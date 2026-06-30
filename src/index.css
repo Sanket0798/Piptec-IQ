@@ -57,6 +57,27 @@ body {
   font-variation-settings: 'wdth' 100;
 }
 
+/* Tailwind v4 preflight sets buttons to cursor:default — restore the pointer
+   on every interactive element so clickable things feel clickable. */
+@layer base {
+  button:not(:disabled),
+  [role='button']:not([aria-disabled='true']),
+  a[href],
+  select:not(:disabled),
+  summary,
+  label:has(input:not(:disabled)),
+  input[type='checkbox']:not(:disabled),
+  input[type='radio']:not(:disabled),
+  input[type='range']:not(:disabled) {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  [aria-disabled='true'] {
+    cursor: not-allowed;
+  }
+}
+
 /* thin, soft scrollbars to match the clean aesthetic */
 * {
   scrollbar-width: thin;

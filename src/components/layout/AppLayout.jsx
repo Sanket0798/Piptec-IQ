@@ -1,12 +1,19 @@
+import { useEffect, useState } from 'react'
 import Sidebar from './Sidebar'
 import Topbar from './Topbar'
 import Icon from '../Icon'
 
 export default function AppLayout({ children }) {
+  const [collapsed, setCollapsed] = useState(() => localStorage.getItem('pt_sidebar_collapsed') === '1')
+
+  useEffect(() => {
+    localStorage.setItem('pt_sidebar_collapsed', collapsed ? '1' : '0')
+  }, [collapsed])
+
   return (
     <div className="flex h-screen overflow-hidden bg-canvas">
-      <Sidebar />
-      <div className="flex min-w-0 flex-1 flex-col">
+      <Sidebar collapsed={collapsed} onToggle={() => setCollapsed((c) => !c)} />
+      <div className="relative z-0 flex min-w-0 flex-1 flex-col">
         <Topbar />
         <main className="flex-1 overflow-y-auto bg-grid">
           <div className="mx-auto max-w-[1400px] px-6 py-6">{children}</div>
