@@ -70,6 +70,26 @@ const paths = {
   chevronDown: <polyline points="6 9 12 15 18 9" />,
   chevronRight: <polyline points="9 6 15 12 9 18" />,
   chevronLeft: <polyline points="15 6 9 12 15 18" />,
+  lock: (
+    <>
+      <rect x="4" y="11" width="16" height="10" rx="2.5" />
+      <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+      <circle cx="12" cy="16" r="1" />
+    </>
+  ),
+  eye: (
+    <>
+      <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" />
+      <circle cx="12" cy="12" r="3" />
+    </>
+  ),
+  eyeOff: (
+    <>
+      <path d="M9.9 5.2A9.5 9.5 0 0 1 12 5c6.5 0 10 7 10 7a16 16 0 0 1-3.3 4M6.6 6.6A16 16 0 0 0 2 12s3.5 7 10 7a9.5 9.5 0 0 0 4-.86" />
+      <path d="M9.9 9.9a3 3 0 0 0 4.2 4.2" />
+      <line x1="3" y1="3" x2="21" y2="21" />
+    </>
+  ),
   sidebar: (
     <>
       <rect x="3" y="4" width="18" height="16" rx="2.5" />

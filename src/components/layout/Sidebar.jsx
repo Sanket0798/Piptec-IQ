@@ -1,7 +1,8 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { cn } from "../../lib/format";
 import Icon from "../Icon";
 import { nav } from "../../data/common";
+import { useAuth } from "../../auth/AuthContext";
 
 function Logo({ collapsed }) {
   return (
@@ -39,7 +40,7 @@ function Logo({ collapsed }) {
   );
 }
 
-function Item({ item, disabled, collapsed }) {
+function Item({ item, disabled, collapsed, onClick }) {
   const inner = (active) => (
     <>
       <span
@@ -71,6 +72,22 @@ function Item({ item, disabled, collapsed }) {
       )}
     </>
   );
+
+  if (onClick) {
+    return (
+      <button
+        type="button"
+        onClick={onClick}
+        title={collapsed ? item.label : undefined}
+        className={cn(
+          "group flex w-full items-center gap-3 rounded-2xl py-1.5 text-left text-sm font-medium text-ink-soft transition-colors hover:text-ink",
+          collapsed ? "justify-center px-1.5" : "px-2.5",
+        )}
+      >
+        {inner(false)}
+      </button>
+    );
+  }
 
   if (disabled) {
     return (
@@ -126,6 +143,14 @@ function GroupLabel({ children, collapsed }) {
 }
 
 export default function Sidebar({ collapsed = false, onToggle }) {
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login", { replace: true });
+  };
+
   return (
     <aside
       className={cn(
@@ -155,9 +180,13 @@ export default function Sidebar({ collapsed = false, onToggle }) {
 
         <GroupLabel collapsed={collapsed}>General</GroupLabel>
         <div className="space-y-1">
-          {nav.general.map((item) => (
-            <Item key={item.id} item={item} disabled collapsed={collapsed} />
-          ))}
+          {nav.general.map((item) =>
+            item.id === "logout" ? (
+              <Item key={item.id} item={item} collapsed={collapsed} onClick={handleLogout} />
+            ) : (
+              <Item key={item.id} item={item} disabled collapsed={collapsed} />
+            ),
+          )}
         </div>
       </nav>
 
