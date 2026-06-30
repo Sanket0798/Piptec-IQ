@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../auth/AuthContext'
 import Icon from '../components/Icon'
@@ -9,6 +9,50 @@ const features = [
   { icon: 'layers', title: 'End-to-end traceability', body: 'Heat-level digital product passports.' },
   { icon: 'leaf', title: 'ESG & sustainability', body: 'Energy, carbon and tender-ready reporting.' },
 ]
+
+const FULL_TEXT = 'The intelligent digital layer for smart pipe manufacturing'
+const SPLIT_INDEX = 36 // "The intelligent digital layer for " (before "smart")
+
+function TypewriterHeading() {
+  const [charIndex, setCharIndex] = useState(0)
+  const [isDeleting, setIsDeleting] = useState(false)
+
+  useEffect(() => {
+    let timeout
+
+    if (!isDeleting && charIndex < FULL_TEXT.length) {
+      // Typing forward
+      timeout = setTimeout(() => setCharIndex((i) => i + 1), 45)
+    } else if (!isDeleting && charIndex >= FULL_TEXT.length) {
+      // Pause at end before deleting
+      timeout = setTimeout(() => setIsDeleting(true), 2000)
+    } else if (isDeleting && charIndex > 0) {
+      // Deleting (faster)
+      timeout = setTimeout(() => setCharIndex((i) => i - 1), 25)
+    } else if (isDeleting && charIndex === 0) {
+      // Pause at start before typing again
+      timeout = setTimeout(() => setIsDeleting(false), 500)
+    }
+
+    return () => clearTimeout(timeout)
+  }, [charIndex, isDeleting])
+
+  const displayed = FULL_TEXT.slice(0, charIndex)
+  const blackPart = displayed.slice(0, SPLIT_INDEX)
+  const greenPart = displayed.slice(SPLIT_INDEX)
+
+  return (
+    <h1 className="mt-5 max-w-xl text-4xl font-bold leading-[1.1] tracking-tight text-ink sm:text-5xl">
+      {blackPart}
+      {greenPart && (
+        <span className="bg-linear-to-r from-brand-500 to-brand-400 bg-clip-text text-transparent">
+          {greenPart}
+        </span>
+      )}
+      <span className="inline-block w-[3px] h-[0.85em] ml-1 align-middle bg-brand-500 animate-blink" />
+    </h1>
+  )
+}
 
 function Field({ label, icon, children }) {
   return (
@@ -53,8 +97,8 @@ export default function Login() {
   return (
     <div className="relative h-screen overflow-hidden bg-canvas bg-grid">
       {/* soft brand glows */}
-      <div className="pointer-events-none absolute -left-40 top-[-10%] size-[480px] rounded-full bg-brand-200/40 blur-[120px]" />
-      <div className="pointer-events-none absolute bottom-[-15%] right-[-10%] size-[520px] rounded-full bg-brand-300/30 blur-[130px]" />
+      <div className="pointer-events-none absolute -left-40 top-[-10%] size-[560px] rounded-full bg-brand-200/50 blur-[100px] animate-float" />
+      <div className="pointer-events-none absolute bottom-[-15%] right-[-10%] size-[600px] rounded-full bg-brand-300/50 blur-[110px] animate-float-reverse" />
 
       <div className="relative mx-auto grid h-full max-w-[1280px] items-center gap-12 px-6 py-6 lg:grid-cols-[1.1fr_minmax(380px,440px)]">
         {/* left: brand + hero + features */}
@@ -71,22 +115,18 @@ export default function Login() {
             AI-Powered Manufacturing Intelligence Platform
           </span>
 
-          <h1 className="mt-5 max-w-xl text-4xl font-bold leading-[1.1] tracking-tight text-ink sm:text-5xl">
-            The intelligent digital layer for{' '}
-            <span className="bg-linear-to-r from-brand-500 to-brand-400 bg-clip-text text-transparent">
-              smart pipe manufacturing
-            </span>
-          </h1>
+          <TypewriterHeading />
           <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-ink-soft">
             Unify production, quality, traceability and sustainability into one decision-ready
             operating platform — with a contextual AI Copilot across every workflow.
           </p>
 
           <div className="mt-8 grid max-w-2xl gap-3 sm:grid-cols-2">
-            {features.map((f) => (
+            {features.map((f, i) => (
               <div
                 key={f.title}
-                className="card-hover flex items-start gap-3 rounded-2xl border border-line bg-surface/70 p-4 backdrop-blur-sm"
+                className="card-hover flex items-start gap-3 rounded-2xl border border-line bg-surface/70 p-4 backdrop-blur-sm opacity-0 animate-reveal-up"
+                style={{ animationDelay: `${600 + i * 100}ms` }}
               >
                 <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600">
                   <Icon name={f.icon} size={18} />
