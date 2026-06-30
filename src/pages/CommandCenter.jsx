@@ -3,6 +3,7 @@ import ExecutiveBrief from '../components/ExecutiveBrief'
 import Card from '../components/ui/Card'
 import KpiTile from '../components/ui/KpiTile'
 import AnimatedCounter from '../components/ui/AnimatedCounter'
+import AnimatedGroup from '../components/ui/AnimatedGroup'
 import Badge from '../components/ui/Badge'
 import AiChip from '../components/ui/AiChip'
 import Icon from '../components/Icon'
@@ -35,7 +36,7 @@ function ChartCard({ title, subtitle, badge, children, className = '' }) {
 
 export default function CommandCenter() {
   return (
-    <div className="animate-fade-up">
+    <div className="animate-page-enter">
       <PageHeader
         breadcrumb="Command Center"
         title="Command Center"
@@ -61,12 +62,12 @@ export default function CommandCenter() {
       />
 
       {/* overview KPI strip */}
-      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+      <AnimatedGroup className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         <KpiTile hero label="Plant Health Score" value="79" sub="composite index" icon="shield" delta="+4" />
         <KpiTile label="Orders at Risk" value="2" sub="this week" icon="alert" tone="warn" />
         <KpiTile label="Revenue at Risk" value="$2.35M" sub="exposure" icon="trendingDown" tone="danger" />
         <KpiTile label="Fleet Utilization" value="74%" sub="6 assets" icon="gauge" />
-      </div>
+      </AnimatedGroup>
 
       {/* health gauge + AI brief */}
       <div className="mt-4 grid gap-4 lg:grid-cols-[340px_1fr]">
@@ -109,7 +110,7 @@ export default function CommandCenter() {
       </div>
 
       {/* secondary KPI tiles */}
-      <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+      <AnimatedGroup className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
         {d.kpis.map((k) => (
           <Card key={k.id} className="p-4">
             <div className="flex items-center gap-2 text-ink-soft">
@@ -121,7 +122,7 @@ export default function CommandCenter() {
             </div>
           </Card>
         ))}
-      </div>
+      </AnimatedGroup>
 
       {/* revenue at risk bar */}
       <Card className="mt-4 p-5">
@@ -187,7 +188,7 @@ export default function CommandCenter() {
       </div>
 
       {/* four analytics charts */}
-      <div className="mt-4 grid gap-4 lg:grid-cols-2">
+      <AnimatedGroup className="mt-4 grid gap-4 lg:grid-cols-2">
         <ChartCard title="Production Trend" subtitle="Output vs plan/target — week">
           <TrendChart data={d.productionTrend} />
         </ChartCard>
@@ -200,7 +201,7 @@ export default function CommandCenter() {
         <ChartCard title="Delivery Risk Forecast" subtitle="Orders by risk band (4 weeks)">
           <GroupedBarChart data={d.deliveryRisk} />
         </ChartCard>
-      </div>
+      </AnimatedGroup>
 
       {/* orders + recommendations/alerts */}
       <div className="mt-4 grid gap-4 lg:grid-cols-[1.5fr_1fr]">

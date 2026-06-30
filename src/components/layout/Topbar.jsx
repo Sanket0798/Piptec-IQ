@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Icon from '../Icon'
 import { user } from '../../data/common'
+import { cn } from '../../lib/format'
 
 export default function Topbar() {
   const inputRef = useRef(null)
@@ -57,18 +58,19 @@ export default function Topbar() {
           >
             <Icon name="mail" size={19} />
           </button>
-          {showMessages && (
-            <div className="absolute right-0 top-full mt-2 w-64 animate-in fade-in slide-in-from-top-1 rounded-2xl border border-line bg-surface p-5 shadow-lg">
-              <div className="flex items-center gap-2 text-sm font-semibold text-ink">
-                <Icon name="mail" size={16} />
-                Messages
-              </div>
-              <div className="mt-3 flex flex-col items-center py-4 text-center">
-                <Icon name="mail" size={32} className="text-ink-faint/40" />
-                <p className="mt-2 text-sm text-ink-faint">No messages</p>
-              </div>
+          <div className={cn(
+            'absolute right-0 top-full mt-2 w-64 rounded-2xl border border-line bg-surface p-5 shadow-lg transition-all duration-200 origin-top-right',
+            showMessages ? 'scale-100 opacity-100 pointer-events-auto' : 'scale-95 opacity-0 pointer-events-none'
+          )}>
+            <div className="flex items-center gap-2 text-sm font-semibold text-ink">
+              <Icon name="mail" size={16} />
+              Messages
             </div>
-          )}
+            <div className="mt-3 flex flex-col items-center py-4 text-center">
+              <Icon name="mail" size={32} className="text-ink-faint/40" />
+              <p className="mt-2 text-sm text-ink-faint">No messages</p>
+            </div>
+          </div>
         </div>
         <div ref={notificationsRef} className="relative">
           <button
@@ -78,18 +80,19 @@ export default function Topbar() {
             <Icon name="bell" size={19} />
             <span className="absolute right-3 top-3 size-2 rounded-full bg-danger ring-2 ring-surface" />
           </button>
-          {showNotifications && (
-            <div className="absolute right-0 top-full mt-2 w-64 animate-in fade-in slide-in-from-top-1 rounded-2xl border border-line bg-surface p-5 shadow-lg">
-              <div className="flex items-center gap-2 text-sm font-semibold text-ink">
-                <Icon name="bell" size={16} />
-                Notifications
-              </div>
-              <div className="mt-3 flex flex-col items-center py-4 text-center">
-                <Icon name="bell" size={32} className="text-ink-faint/40" />
-                <p className="mt-2 text-sm text-ink-faint">No notifications</p>
-              </div>
+          <div className={cn(
+            'absolute right-0 top-full mt-2 w-64 rounded-2xl border border-line bg-surface p-5 shadow-lg transition-all duration-200 origin-top-right',
+            showNotifications ? 'scale-100 opacity-100 pointer-events-auto' : 'scale-95 opacity-0 pointer-events-none'
+          )}>
+            <div className="flex items-center gap-2 text-sm font-semibold text-ink">
+              <Icon name="bell" size={16} />
+              Notifications
             </div>
-          )}
+            <div className="mt-3 flex flex-col items-center py-4 text-center">
+              <Icon name="bell" size={32} className="text-ink-faint/40" />
+              <p className="mt-2 text-sm text-ink-faint">No notifications</p>
+            </div>
+          </div>
         </div>
 
         <div className="ml-1 flex items-center gap-3 rounded-2xl border border-line bg-surface py-1.5 pl-1.5 pr-4">

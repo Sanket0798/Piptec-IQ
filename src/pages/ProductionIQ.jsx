@@ -3,6 +3,7 @@ import ExecutiveBrief from '../components/ExecutiveBrief'
 import Card from '../components/ui/Card'
 import Icon from '../components/Icon'
 import AnimatedCounter from '../components/ui/AnimatedCounter'
+import AnimatedGroup from '../components/ui/AnimatedGroup'
 import PillBarChart from '../components/charts/PillBarChart'
 import ScenarioSimulator from '../components/prod/ScenarioSimulator'
 import MachineLineStatus from '../components/prod/MachineLineStatus'
@@ -31,7 +32,7 @@ function KpiStat({ k }) {
 
 export default function ProductionIQ() {
   return (
-    <div className="animate-fade-up">
+    <div className="animate-page-enter">
       <PageHeader
         breadcrumb="Production IQ"
         title="Production IQ"
@@ -51,11 +52,11 @@ export default function ProductionIQ() {
       />
 
       {/* KPI tiles */}
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
+      <AnimatedGroup className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
         {d.kpis.map((k) => (
           <KpiStat key={k.id} k={k} />
         ))}
-      </div>
+      </AnimatedGroup>
 
       <div className="mt-4">
         <ScenarioSimulator />
