@@ -2,6 +2,7 @@ import PageHeader, { Button } from '../components/layout/PageHeader'
 import ExecutiveBrief from '../components/ExecutiveBrief'
 import Card from '../components/ui/Card'
 import Icon from '../components/Icon'
+import AnimatedCounter from '../components/ui/AnimatedCounter'
 import PillBarChart from '../components/charts/PillBarChart'
 import ScenarioSimulator from '../components/prod/ScenarioSimulator'
 import MachineLineStatus from '../components/prod/MachineLineStatus'
@@ -22,7 +23,7 @@ function KpiStat({ k }) {
         <span className="text-xs font-medium text-ink-faint">{k.label}</span>
         <Icon name={k.icon} size={16} className={cn(k.tone === 'danger' ? 'text-danger' : 'text-brand-500')} />
       </div>
-      <div className={cn('mt-2 text-2xl font-bold', tone)}>{k.value}</div>
+      <div className={cn('mt-2 text-2xl font-bold', tone)}><AnimatedCounter value={k.value} /></div>
       <div className="text-xs text-ink-faint">{k.sub}</div>
     </Card>
   )

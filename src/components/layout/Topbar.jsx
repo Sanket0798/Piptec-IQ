@@ -1,9 +1,13 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Icon from '../Icon'
 import { user } from '../../data/common'
 
 export default function Topbar() {
   const inputRef = useRef(null)
+  const [showMessages, setShowMessages] = useState(false)
+  const [showNotifications, setShowNotifications] = useState(false)
+  const messagesRef = useRef(null)
+  const notificationsRef = useRef(null)
 
   // Cmd/Ctrl+F focuses the search field (matches the ⌘F affordance).
   useEffect(() => {
@@ -15,6 +19,20 @@ export default function Topbar() {
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
+  }, [])
+
+  // Close popovers on outside click
+  useEffect(() => {
+    const onClick = (e) => {
+      if (messagesRef.current && !messagesRef.current.contains(e.target)) {
+        setShowMessages(false)
+      }
+      if (notificationsRef.current && !notificationsRef.current.contains(e.target)) {
+        setShowNotifications(false)
+      }
+    }
+    document.addEventListener('mousedown', onClick)
+    return () => document.removeEventListener('mousedown', onClick)
   }, [])
 
   return (
@@ -32,13 +50,47 @@ export default function Topbar() {
       </label>
 
       <div className="ml-auto flex items-center gap-2">
-        <button className="grid size-11 place-items-center rounded-2xl border border-line bg-surface text-ink-soft transition hover:text-brand-600">
-          <Icon name="mail" size={19} />
-        </button>
-        <button className="relative grid size-11 place-items-center rounded-2xl border border-line bg-surface text-ink-soft transition hover:text-brand-600">
-          <Icon name="bell" size={19} />
-          <span className="absolute right-3 top-3 size-2 rounded-full bg-danger ring-2 ring-surface" />
-        </button>
+        <div ref={messagesRef} className="relative">
+          <button
+            onClick={() => { setShowMessages((v) => !v); setShowNotifications(false) }}
+            className="grid size-11 place-items-center rounded-2xl border border-line bg-surface text-ink-soft transition hover:text-brand-600"
+          >
+            <Icon name="mail" size={19} />
+          </button>
+          {showMessages && (
+            <div className="absolute right-0 top-full mt-2 w-64 animate-in fade-in slide-in-from-top-1 rounded-2xl border border-line bg-surface p-5 shadow-lg">
+              <div className="flex items-center gap-2 text-sm font-semibold text-ink">
+                <Icon name="mail" size={16} />
+                Messages
+              </div>
+              <div className="mt-3 flex flex-col items-center py-4 text-center">
+                <Icon name="mail" size={32} className="text-ink-faint/40" />
+                <p className="mt-2 text-sm text-ink-faint">No messages</p>
+              </div>
+            </div>
+          )}
+        </div>
+        <div ref={notificationsRef} className="relative">
+          <button
+            onClick={() => { setShowNotifications((v) => !v); setShowMessages(false) }}
+            className="relative grid size-11 place-items-center rounded-2xl border border-line bg-surface text-ink-soft transition hover:text-brand-600"
+          >
+            <Icon name="bell" size={19} />
+            <span className="absolute right-3 top-3 size-2 rounded-full bg-danger ring-2 ring-surface" />
+          </button>
+          {showNotifications && (
+            <div className="absolute right-0 top-full mt-2 w-64 animate-in fade-in slide-in-from-top-1 rounded-2xl border border-line bg-surface p-5 shadow-lg">
+              <div className="flex items-center gap-2 text-sm font-semibold text-ink">
+                <Icon name="bell" size={16} />
+                Notifications
+              </div>
+              <div className="mt-3 flex flex-col items-center py-4 text-center">
+                <Icon name="bell" size={32} className="text-ink-faint/40" />
+                <p className="mt-2 text-sm text-ink-faint">No notifications</p>
+              </div>
+            </div>
+          )}
+        </div>
 
         <div className="ml-1 flex items-center gap-3 rounded-2xl border border-line bg-surface py-1.5 pl-1.5 pr-4">
           <span className="grid size-9 place-items-center rounded-xl bg-brand-500 text-sm font-semibold text-white">

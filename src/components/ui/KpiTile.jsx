@@ -1,5 +1,6 @@
 import { cn } from '../../lib/format'
 import Icon from '../Icon'
+import AnimatedCounter from './AnimatedCounter'
 
 // Donezo-style KPI card. `hero` renders the solid dark-green filled variant.
 export default function KpiTile({
@@ -57,7 +58,7 @@ export default function KpiTile({
 
       <div className="mt-5">
         <div className={cn('text-3xl font-bold leading-none tracking-tight', hero ? 'text-white' : toneText[tone])}>
-          {value}
+          <AnimatedCounter value={value} />
         </div>
         {(delta || sub) && (
           <div className={cn('mt-2 flex items-center gap-1.5 text-xs', hero ? 'text-white/70' : 'text-ink-faint')}>

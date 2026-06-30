@@ -2,6 +2,7 @@ import PageHeader, { Button } from '../components/layout/PageHeader'
 import ExecutiveBrief from '../components/ExecutiveBrief'
 import Card from '../components/ui/Card'
 import KpiTile from '../components/ui/KpiTile'
+import AnimatedCounter from '../components/ui/AnimatedCounter'
 import Badge from '../components/ui/Badge'
 import AiChip from '../components/ui/AiChip'
 import Icon from '../components/Icon'
@@ -116,7 +117,7 @@ export default function CommandCenter() {
               <span className="text-xs font-medium">{k.label}</span>
             </div>
             <div className={`mt-2 text-2xl font-bold ${k.tone === 'danger' ? 'text-danger' : k.tone === 'warn' ? 'text-warn' : k.tone === 'ok' ? 'text-ok' : 'text-ink'}`}>
-              {k.value}
+              <AnimatedCounter value={k.value} />
             </div>
           </Card>
         ))}
@@ -140,7 +141,7 @@ export default function CommandCenter() {
           </div>
         </div>
         <div className="mt-3 h-2.5 w-full overflow-hidden rounded-full bg-line-soft">
-          <div className="h-full w-full rounded-full bg-gradient-to-r from-danger/80 to-warn" />
+          <div className="h-full w-full rounded-full bg-linear-to-r from-danger/80 to-warn" />
         </div>
         <div className="mt-1.5 text-xs text-ink-faint">0% mitigated</div>
       </Card>

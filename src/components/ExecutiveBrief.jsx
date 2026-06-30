@@ -5,7 +5,7 @@ import { Button } from './layout/PageHeader'
 
 // The "Executive Brief" presenter banner shown atop each microapp.
 export default function ExecutiveBrief({ audience, what, why, stats = [] }) {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
 
   if (!open) {
     return (
