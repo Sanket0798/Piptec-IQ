@@ -111,17 +111,28 @@ export default function CommandCenter() {
 
       {/* secondary KPI tiles */}
       <AnimatedGroup className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
-        {d.kpis.map((k) => (
-          <Card key={k.id} className="p-4">
-            <div className="flex items-center gap-2 text-ink-soft">
-              <Icon name={k.icon} size={16} className="text-brand-500" />
-              <span className="text-xs font-medium">{k.label}</span>
-            </div>
-            <div className={`mt-2 text-2xl font-bold ${k.tone === 'danger' ? 'text-danger' : k.tone === 'warn' ? 'text-warn' : k.tone === 'ok' ? 'text-ok' : 'text-ink'}`}>
-              <AnimatedCounter value={k.value} />
-            </div>
-          </Card>
-        ))}
+        {d.kpis.map((k) => {
+          const iconBg = {
+            ink: 'bg-brand-50 text-brand-600',
+            ok: 'bg-[#ecf7f0] text-ok',
+            warn: 'bg-[#fdf5e6] text-warn',
+            danger: 'bg-[#fbeceb] text-danger',
+          }[k.tone]
+
+          return (
+            <Card key={k.id} className="p-4">
+              <div className="flex items-center gap-2">
+                <span className={`grid size-7 place-items-center rounded-lg ${iconBg} ${k.tone === 'danger' ? 'animate-pulse-soft' : ''}`}>
+                  <Icon name={k.icon} size={14} />
+                </span>
+                <span className="text-xs font-medium text-ink-faint">{k.label}</span>
+              </div>
+              <div className={`mt-2 text-2xl font-bold ${k.tone === 'danger' ? 'text-danger' : k.tone === 'warn' ? 'text-warn' : k.tone === 'ok' ? 'text-ok' : 'text-ink'}`}>
+                <AnimatedCounter value={k.value} />
+              </div>
+            </Card>
+          )
+        })}
       </AnimatedGroup>
 
       {/* revenue at risk bar */}

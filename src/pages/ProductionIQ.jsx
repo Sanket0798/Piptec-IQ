@@ -12,19 +12,33 @@ import { cn } from '../lib/format'
 import * as d from '../data/productionIQ'
 
 function KpiStat({ k }) {
-  const tone = {
+  const toneText = {
     ink: 'text-ink',
     warn: 'text-warn',
     danger: 'text-danger',
     ok: 'text-ok',
   }[k.tone]
+
+  const iconBg = {
+    ink: 'bg-brand-50 text-brand-600',
+    ok: 'bg-[#ecf7f0] text-ok',
+    warn: 'bg-[#fdf5e6] text-warn',
+    danger: 'bg-[#fbeceb] text-danger',
+  }[k.tone]
+
   return (
     <Card className="p-4">
       <div className="flex items-center justify-between">
         <span className="text-xs font-medium text-ink-faint">{k.label}</span>
-        <Icon name={k.icon} size={16} className={cn(k.tone === 'danger' ? 'text-danger' : 'text-brand-500')} />
+        <span className={cn(
+          'grid size-8 place-items-center rounded-xl',
+          iconBg,
+          (k.tone === 'danger') && 'animate-pulse-soft',
+        )}>
+          <Icon name={k.icon} size={16} />
+        </span>
       </div>
-      <div className={cn('mt-2 text-2xl font-bold', tone)}><AnimatedCounter value={k.value} /></div>
+      <div className={cn('mt-2 text-2xl font-bold', toneText)}><AnimatedCounter value={k.value} /></div>
       <div className="text-xs text-ink-faint">{k.sub}</div>
     </Card>
   )
