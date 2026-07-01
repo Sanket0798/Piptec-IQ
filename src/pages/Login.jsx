@@ -97,8 +97,8 @@ export default function Login() {
   return (
     <div className="relative h-screen overflow-hidden bg-canvas bg-grid">
       {/* soft brand glows */}
-      <div className="pointer-events-none absolute -left-40 top-[-10%] size-[560px] rounded-full bg-brand-200/50 blur-[100px] animate-float" />
-      <div className="pointer-events-none absolute bottom-[-15%] right-[-10%] size-[600px] rounded-full bg-brand-300/50 blur-[110px] animate-float-reverse" />
+      <div className="pointer-events-none absolute -left-40 top-[-10%] size-[560px] rounded-full bg-[#a7d9bb]/50 blur-[100px] animate-float" />
+      <div className="pointer-events-none absolute bottom-[-15%] right-[-10%] size-[600px] rounded-full bg-[#6ec293]/50 blur-[110px] animate-float-reverse" />
 
       <div className="relative mx-auto grid h-full max-w-[1280px] items-center gap-12 px-6 py-6 lg:grid-cols-[1.1fr_minmax(380px,440px)]">
         {/* left: brand + hero + features */}
@@ -141,7 +141,7 @@ export default function Login() {
         </div>
 
         {/* right: sign-in card */}
-        <div className="animate-fade-up rounded-(--radius-card) border border-line bg-surface p-7 shadow-[0_1px_2px_rgba(15,32,50,0.04),0_24px_60px_-24px_rgba(15,32,50,0.22)] sm:p-8">
+        <div className="animate-fade-up rounded-(--radius-card) border border-line bg-surface p-7 shadow-[0_1px_2px_rgba(16,40,28,0.04),0_24px_60px_-24px_rgba(16,40,28,0.22)] sm:p-8">
           <h2 className="text-2xl font-bold tracking-tight text-ink">Sign in</h2>
           <p className="mt-1 text-sm text-ink-soft">Access the PipeTec IQ platform.</p>
 

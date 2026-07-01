@@ -5,14 +5,14 @@ export const C = {
   brandBright: '#5ea2d5',
   brandSoft: '#bedcf1',
   brandFaint: '#dbebf8',
-  ink: '#1a1f26',
-  inkSoft: '#59616b',
-  inkFaint: '#8b939e',
-  line: '#e4e9f0',
+  ink: '#1b211c',
+  inkSoft: '#5b6660',
+  inkFaint: '#909a93',
+  line: '#e6e9e3',
   warn: '#d9962a',
   danger: '#d8554f',
   ok: '#1f9d57',
-  grid: '#eef2f7',
+  grid: '#eef1ec',
 }
 
 export const axisProps = {

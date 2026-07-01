@@ -78,7 +78,7 @@ export default function RadialGauge({
           </linearGradient>
         </defs>
         {/* Background track */}
-        <path d={arcPath(0, 1)} fill="none" stroke="#eef2f7" strokeWidth={thickness} strokeLinecap="round" />
+        <path d={arcPath(0, 1)} fill="none" stroke="#eef1ec" strokeWidth={thickness} strokeLinecap="round" />
         {/* Animated foreground arc */}
         <path
           d={arcPath(0, frac)}

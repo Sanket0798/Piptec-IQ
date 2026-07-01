@@ -1,15 +1,15 @@
 @import 'tailwindcss';
 
 /* ----------------------------------------------------------------------------
-   PipeTec IQ — design tokens (light, sky-blue theme — client brand #90c2e7)
+   PipeTec IQ — green ambient background + sky-blue brand (#90c2e7) for UI
 ---------------------------------------------------------------------------- */
 @theme {
   --font-sans: 'Saira', ui-sans-serif, system-ui, sans-serif;
 
-  /* surfaces (cool blue-grey neutrals) */
-  --color-canvas: #eef1f5;
+  /* surfaces (soft green-grey neutrals — client keeps the green background) */
+  --color-canvas: #eef0ec;
   --color-surface: #ffffff;
-  --color-surface-soft: #f4f7fa;
+  --color-surface-soft: #f6f7f4;
 
   /* brand — sky blue (client theme #90c2e7 is the signature brand-300) */
   --color-brand-50: #eff6fc;
@@ -23,14 +23,14 @@
   --color-brand-800: #16374f;
   --color-brand-900: #0e2536;
 
-  /* ink (cool slate) */
-  --color-ink: #1a1f26;
-  --color-ink-soft: #59616b;
-  --color-ink-faint: #8b939e;
+  /* ink */
+  --color-ink: #1b211c;
+  --color-ink-soft: #5b6660;
+  --color-ink-faint: #909a93;
 
   /* lines */
-  --color-line: #e4e9f0;
-  --color-line-soft: #eef2f7;
+  --color-line: #e6e9e3;
+  --color-line-soft: #eef1ec;
 
   /* status (semantic — kept distinct from the sky-blue brand) */
   --color-ok: #1f9d57;
@@ -97,7 +97,7 @@ body {
 
 /* utility: subtle dotted grid background (patterncraft-style) */
 .bg-grid {
-  background-image: radial-gradient(circle at 1px 1px, rgba(43, 118, 179, 0.08) 1px, transparent 0);
+  background-image: radial-gradient(circle at 1px 1px, rgba(31, 122, 77, 0.08) 1px, transparent 0);
   background-size: 22px 22px;
 }
 
@@ -180,7 +180,7 @@ a[href]:active {
 }
 .card-hover:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px -12px rgba(15, 32, 50, 0.15);
+  box-shadow: 0 12px 32px -12px rgba(16, 40, 28, 0.15);
 }
 
 @keyframes pulse-soft {
