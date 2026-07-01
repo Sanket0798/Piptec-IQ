@@ -8,11 +8,13 @@ import {
   Tooltip,
 } from 'recharts'
 import { C, axisProps, TooltipShell } from './chartTheme'
+import ChartReveal from './ChartReveal'
 
 // Quality defect & rework rate over recent weeks.
 export default function DefectsChart({ data, height = 200 }) {
   return (
-    <ResponsiveContainer width="100%" height={height}>
+    <ChartReveal height={height}>
+    <ResponsiveContainer width="100%" height="100%">
       <AreaChart data={data} margin={{ top: 10, right: 8, bottom: 0, left: -18 }}>
         <defs>
           <linearGradient id="defectFill" x1="0" y1="0" x2="0" y2="1">
@@ -32,5 +34,6 @@ export default function DefectsChart({ data, height = 200 }) {
         <Area type="monotone" dataKey="rework" stroke={C.warn} strokeWidth={2} fill="url(#reworkFill)" name="Rework %" />
       </AreaChart>
     </ResponsiveContainer>
+    </ChartReveal>
   )
 }

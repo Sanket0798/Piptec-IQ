@@ -194,18 +194,18 @@ export default function Sidebar({ collapsed = false, onToggle }) {
       {collapsed ? (
         <button
           title="Ask PipeTec IQ Copilot"
-          className="mx-auto mt-4 grid size-12 place-items-center rounded-2xl bg-brand-800 bg-wave text-white shadow-[0_10px_22px_-10px_rgba(22,55,79,0.6)] transition hover:scale-105"
+          className="mx-auto mt-4 grid size-12 place-items-center rounded-2xl card-gradient text-white shadow-[0_10px_22px_-10px_rgba(22,55,79,0.6)] transition hover:scale-105"
         >
           <Icon name="sparkles" size={20} strokeWidth={2} />
         </button>
       ) : (
-        <div className="relative mt-4 overflow-hidden rounded-3xl bg-brand-800 bg-wave p-4 text-white">
+        <div className="relative mt-4 overflow-hidden rounded-3xl card-gradient p-4 text-white">
           <span className="grid size-9 place-items-center rounded-xl bg-white/15">
             <Icon name="sparkles" size={18} strokeWidth={2} />
           </span>
-          <div className="mt-3 text-sm font-semibold leading-snug">
+          {/* <div className="mt-3 text-sm font-semibold leading-snug">
             Ask PipeTec IQ Copilot
-          </div>
+          </div> */}
           <p className="mt-1 text-xs text-white/70">
             Get an instant AI brief on plant health & risk.
           </p>

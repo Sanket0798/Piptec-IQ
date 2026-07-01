@@ -24,7 +24,7 @@ function ChartCard({ title, subtitle, badge, children, className = '' }) {
     <Card className={`p-5 ${className}`}>
       <div className="mb-3 flex items-start justify-between gap-3">
         <div>
-          <h3 className="font-semibold text-ink">{title}</h3>
+          <h3 className="font-semibold text-gradient">{title}</h3>
           {subtitle && <p className="mt-0.5 text-xs text-ink-faint">{subtitle}</p>}
         </div>
         {badge}
@@ -169,7 +169,7 @@ export default function CommandCenter() {
         </ChartCard>
 
         <Card className="p-5">
-          <h3 className="font-semibold text-ink">Forecast Summary</h3>
+          <h3 className="font-semibold text-gradient">Forecast Summary</h3>
           <p className="mt-0.5 text-xs text-ink-faint">Next 5 working days</p>
           <div className="mt-4 grid grid-cols-2 gap-3">
             <div className="rounded-xl bg-surface-soft p-3">

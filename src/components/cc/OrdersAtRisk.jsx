@@ -60,7 +60,7 @@ function OrderRow({ order, applied, onApply }) {
                 'inline-flex items-center gap-2 rounded-xl px-3.5 py-2 text-sm font-semibold transition',
                 applied
                   ? 'cursor-default bg-brand-50 text-brand-600'
-                  : 'bg-brand-500 text-white hover:bg-brand-600',
+                  : 'btn-gradient text-white',
               )}
             >
               <Icon name={applied ? 'check' : 'sparkles'} size={15} strokeWidth={2} />

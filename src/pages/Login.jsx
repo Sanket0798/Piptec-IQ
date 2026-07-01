@@ -42,14 +42,11 @@ function TypewriterHeading() {
   const greenPart = displayed.slice(SPLIT_INDEX)
 
   return (
-    <h1 className="mt-5 max-w-xl text-4xl font-bold leading-[1.1] tracking-tight text-ink sm:text-5xl">
-      {blackPart}
-      {greenPart && (
-        <span className="bg-linear-to-r from-brand-500 to-brand-400 bg-clip-text text-transparent">
-          {greenPart}
-        </span>
-      )}
-      <span className="inline-block w-[3px] h-[0.85em] ml-1 align-middle bg-brand-500 animate-blink" />
+    <h1 className="mt-5 max-w-xl text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">
+      <span className="text-gradient">
+        {displayed}
+      </span>
+      <span className="inline-block w-[3px] h-[0.85em] ml-1 align-middle bg-[#00a098] animate-blink" />
     </h1>
   )
 }
@@ -142,7 +139,7 @@ export default function Login() {
 
         {/* right: sign-in card */}
         <div className="animate-fade-up rounded-(--radius-card) border border-line bg-surface p-7 shadow-[0_1px_2px_rgba(16,40,28,0.04),0_24px_60px_-24px_rgba(16,40,28,0.22)] sm:p-8">
-          <h2 className="text-2xl font-bold tracking-tight text-ink">Sign in</h2>
+          <h2 className="text-2xl font-bold tracking-tight text-gradient">Sign in</h2>
           <p className="mt-1 text-sm text-ink-soft">Access the PipeTec IQ platform.</p>
 
           <form onSubmit={onSubmit} className="mt-6 space-y-4">
@@ -186,7 +183,7 @@ export default function Login() {
             <button
               type="submit"
               disabled={loading}
-              className="flex w-full items-center justify-center gap-2 rounded-2xl bg-linear-to-r from-brand-500 to-brand-400 py-3.5 text-sm font-semibold text-white shadow-[0_12px_26px_-12px_rgba(43,118,179,0.8)] transition hover:from-brand-600 hover:to-brand-500 disabled:opacity-70"
+              className="flex w-full items-center justify-center gap-2 rounded-2xl btn-gradient py-3.5 text-sm font-semibold text-white shadow-[0_12px_26px_-12px_rgba(0,64,104,0.7)] disabled:opacity-70"
             >
               {loading ? (
                 <>

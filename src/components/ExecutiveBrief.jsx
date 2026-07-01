@@ -19,7 +19,7 @@ export default function ExecutiveBrief({ audience, what, why, stats = [] }) {
           <span className="grid size-8 place-items-center rounded-lg bg-brand-50 text-brand-600">
             <Icon name="monitor" size={16} />
           </span>
-          <span className="text-sm font-semibold text-ink">Executive Brief</span>
+          <span className="text-sm font-semibold text-gradient">Executive Brief</span>
           <span className="hidden text-xs text-ink-faint sm:inline">· Presenter mode — give the quick intro, then start the demo.</span>
         </div>
         <Icon

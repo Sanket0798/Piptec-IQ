@@ -11,7 +11,7 @@ export default function SectionHeading({ icon, title, subtitle, action, classNam
           </span>
         )}
         <div>
-          <h2 className="text-base font-semibold tracking-tight text-ink">{title}</h2>
+          <h2 className="text-base font-semibold tracking-tight text-gradient">{title}</h2>
           {subtitle && <p className="mt-0.5 text-sm text-ink-soft">{subtitle}</p>}
         </div>
       </div>

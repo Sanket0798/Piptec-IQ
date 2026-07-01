@@ -10,6 +10,7 @@ import {
   ReferenceLine,
 } from 'recharts'
 import { C, axisProps, TooltipShell } from './chartTheme'
+import ChartReveal from './ChartReveal'
 
 // Predictive output forecast: 7-day history line + 5-day projection with a confidence band.
 export default function ForecastChart({ data, splitLabel = 'Sun' }) {
@@ -21,12 +22,19 @@ export default function ForecastChart({ data, splitLabel = 'Sun' }) {
   }))
 
   return (
-    <ResponsiveContainer width="100%" height={240}>
+    <ChartReveal height={240}>
+    <ResponsiveContainer width="100%" height="100%">
       <ComposedChart data={rows} margin={{ top: 10, right: 8, bottom: 0, left: -18 }}>
         <defs>
           <linearGradient id="histFill" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor={C.brand} stopOpacity={0.18} />
             <stop offset="100%" stopColor={C.brand} stopOpacity={0} />
+          </linearGradient>
+          {/* logo gradient for the line stroke: navy (start) → blue → teal (end) */}
+          <linearGradient id="lineBrandFc" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#004068" />
+            <stop offset="50%" stopColor="#1870b8" />
+            <stop offset="100%" stopColor="#00a098" />
           </linearGradient>
         </defs>
         <CartesianGrid stroke={C.grid} vertical={false} />
@@ -50,8 +58,8 @@ export default function ForecastChart({ data, splitLabel = 'Sun' }) {
         <Area
           type="monotone"
           dataKey="actual"
-          stroke={C.brand}
-          strokeWidth={2.5}
+          stroke="url(#lineBrandFc)"
+          strokeWidth={3}
           fill="url(#histFill)"
           dot={false}
           name="Actual"
@@ -67,5 +75,6 @@ export default function ForecastChart({ data, splitLabel = 'Sun' }) {
         />
       </ComposedChart>
     </ResponsiveContainer>
+    </ChartReveal>
   )
 }

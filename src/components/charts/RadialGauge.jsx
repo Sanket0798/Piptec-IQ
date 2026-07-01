@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import useInView from '../../lib/useInView'
 
 // SVG radial gauge with animated arc draw and counter.
 export default function RadialGauge({
@@ -73,8 +74,9 @@ export default function RadialGauge({
       <svg width={size} height={size}>
         <defs>
           <linearGradient id={gid} x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#5ea2d5" />
-            <stop offset="100%" stopColor="#2b76b3" />
+            <stop offset="0%" stopColor="#004068" />
+            <stop offset="50%" stopColor="#1870b8" />
+            <stop offset="100%" stopColor="#00a098" />
           </linearGradient>
         </defs>
         {/* Background track */}

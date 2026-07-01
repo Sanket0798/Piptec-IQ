@@ -126,7 +126,7 @@ export default function ScenarioSimulator() {
           </div>
           <ProgressBar value={projected} tone={projected >= 60 ? 'danger' : projected >= 30 ? 'warn' : 'ok'} height="h-2.5" />
 
-          <div className="rounded-2xl bg-brand-800 bg-wave p-4 text-white">
+          <div className="rounded-2xl card-gradient p-4 text-white">
             <div className="text-xs font-medium uppercase tracking-wide text-white/70">Revenue protected</div>
             <div className="text-3xl font-bold">{money(protectedRev)}</div>
             <div className="text-xs text-white/70">of {money(order.revenue)} at risk</div>
@@ -143,7 +143,7 @@ export default function ScenarioSimulator() {
             </p>
           </div>
 
-          <button className="rounded-2xl bg-brand-500 py-3 text-sm font-semibold text-white transition hover:bg-brand-600">
+          <button className="rounded-2xl btn-gradient py-3 text-sm font-semibold text-white">
             <Icon name="sparkles" size={15} strokeWidth={2} className="mr-1.5 inline" />
             Apply scenario
           </button>

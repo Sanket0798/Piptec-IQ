@@ -8,11 +8,13 @@ import {
   Tooltip,
 } from 'recharts'
 import { C, axisProps, TooltipShell } from './chartTheme'
+import ChartReveal from './ChartReveal'
 
 // Delivery risk forecast — orders grouped by risk band per week.
 export default function GroupedBarChart({ data, height = 220 }) {
   return (
-    <ResponsiveContainer width="100%" height={height}>
+    <ChartReveal height={height}>
+    <ResponsiveContainer width="100%" height="100%">
       <BarChart data={data} margin={{ top: 10, right: 8, bottom: 0, left: -22 }} barCategoryGap="24%" barGap={3}>
         <CartesianGrid stroke={C.grid} vertical={false} />
         <XAxis dataKey="label" {...axisProps} />
@@ -23,5 +25,6 @@ export default function GroupedBarChart({ data, height = 220 }) {
         <Bar dataKey="high" name="High" fill={C.danger} radius={[6, 6, 0, 0]} maxBarSize={14} />
       </BarChart>
     </ResponsiveContainer>
+    </ChartReveal>
   )
 }

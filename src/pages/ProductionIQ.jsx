@@ -81,7 +81,7 @@ export default function ProductionIQ() {
         <MachineLineStatus lines={d.machineLines} />
         <div className="space-y-4">
           <Card className="p-5">
-            <h3 className="font-semibold text-ink">Work-in-Progress by Stage</h3>
+            <h3 className="font-semibold text-gradient">Work-in-Progress by Stage</h3>
             <p className="mt-0.5 text-xs text-ink-faint">Jobs per stage</p>
             <div className="mt-2">
               <PillBarChart data={d.wipByStage} height={200} max={8} />
@@ -94,7 +94,7 @@ export default function ProductionIQ() {
                 <Icon name="alert" size={16} />
               </span>
               <div>
-                <h3 className="font-semibold text-ink">Bottleneck Detection</h3>
+                <h3 className="font-semibold text-gradient">Bottleneck Detection</h3>
                 <p className="text-xs text-ink-faint">AI flagged</p>
               </div>
             </div>

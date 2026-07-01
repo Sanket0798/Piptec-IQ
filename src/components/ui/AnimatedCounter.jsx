@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
+import useInView from '../../lib/useInView'
 
 /**
- * Animates a numeric value from 0 to target.
- * Handles prefixes ($), suffixes (%, M, etc.), and decimals.
+ * Animates a numeric value from 0 to target — but only once it scrolls into
+ * view, so the count-up is actually seen by the user instead of running
+ * silently on page load while off-screen.
  *
  * Usage: <AnimatedCounter value="$2.35M" duration={1200} />
  */
 export default function AnimatedCounter({ value, duration = 1400, className = '' }) {
+  const [ref, inView] = useInView({ threshold: 0.4 })
   const [display, setDisplay] = useState('')
   const rafRef = useRef(null)
 
@@ -45,8 +48,9 @@ export default function AnimatedCounter({ value, duration = 1400, className = ''
       return `${prefix}${formatted}${suffix}`
     }
 
-    // Start from zero
+    // Hold at zero until the counter scrolls into view
     setDisplay(format(0))
+    if (!inView) return
 
     const startTime = performance.now()
 
@@ -69,7 +73,7 @@ export default function AnimatedCounter({ value, duration = 1400, className = ''
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current)
     }
-  }, [value, duration])
+  }, [value, duration, inView])
 
-  return <span className={className}>{display}</span>
+  return <span ref={ref} className={className}>{display}</span>
 }
