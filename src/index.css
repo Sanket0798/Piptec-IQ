@@ -4,7 +4,7 @@
    PipeTec IQ — green ambient background + sky-blue brand (#90c2e7) for UI
 ---------------------------------------------------------------------------- */
 @theme {
-  --font-sans: 'Saira', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
 
   /* surfaces (soft green-grey neutrals — client keeps the green background) */
   --color-canvas: #eef0ec;
@@ -54,7 +54,6 @@ body {
   background-color: var(--color-canvas);
   color: var(--color-ink);
   -webkit-font-smoothing: antialiased;
-  font-variation-settings: 'wdth' 100;
 }
 
 /* Tailwind v4 preflight sets buttons to cursor:default — restore the pointer
