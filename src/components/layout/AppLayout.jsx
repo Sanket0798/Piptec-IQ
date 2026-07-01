@@ -29,7 +29,7 @@ export default function AppLayout({ children }) {
       </div>
 
       {/* persistent Copilot launcher */}
-      <button className="group fixed bottom-6 right-6 z-30 flex items-center gap-2 rounded-full bg-brand-800 bg-wave py-3 pl-4 pr-5 text-sm font-semibold text-white shadow-[0_16px_36px_-12px_rgba(15,61,40,0.6)] transition hover:scale-[1.03]">
+      <button className="group fixed bottom-6 right-6 z-30 flex items-center gap-2 rounded-full bg-brand-800 bg-wave py-3 pl-4 pr-5 text-sm font-semibold text-white shadow-[0_16px_36px_-12px_rgba(22,55,79,0.6)] transition hover:scale-[1.03]">
         <Icon name="sparkles" size={18} strokeWidth={2} className="transition group-hover:rotate-12" />
         Ask PipeTec IQ
         <kbd className="ml-1 rounded-md bg-white/15 px-1.5 py-0.5 text-[11px]">⌘K</kbd>

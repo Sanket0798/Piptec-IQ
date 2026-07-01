@@ -27,7 +27,7 @@ export default function PillBarChart({ data, height = 220, unit = '', max }) {
         <XAxis dataKey="label" {...axisProps} interval={0} />
         <YAxis {...axisProps} width={40} domain={max ? [0, max] : undefined} />
         <Tooltip
-          cursor={{ fill: 'rgba(31,122,77,0.05)' }}
+          cursor={{ fill: 'rgba(43,118,179,0.06)' }}
           content={
             <TooltipShell
               render={(p) => (

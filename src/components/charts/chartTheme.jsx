@@ -1,18 +1,18 @@
 // Shared chart palette + helpers so every Recharts component stays on-brand.
 
 export const C = {
-  brand: '#1f7a4d',
-  brandBright: '#3fa873',
-  brandSoft: '#a7d9bb',
-  brandFaint: '#d4ecdd',
-  ink: '#1b211c',
-  inkSoft: '#5b6660',
-  inkFaint: '#909a93',
-  line: '#e6e9e3',
+  brand: '#2b76b3',
+  brandBright: '#5ea2d5',
+  brandSoft: '#bedcf1',
+  brandFaint: '#dbebf8',
+  ink: '#1a1f26',
+  inkSoft: '#59616b',
+  inkFaint: '#8b939e',
+  line: '#e4e9f0',
   warn: '#d9962a',
   danger: '#d8554f',
   ok: '#1f9d57',
-  grid: '#eef1ec',
+  grid: '#eef2f7',
 }
 
 export const axisProps = {

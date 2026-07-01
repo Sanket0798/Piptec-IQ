@@ -25,8 +25,8 @@ export default function KpiTile({
       className={cn(
         'group relative overflow-hidden rounded-3xl border p-5 transition-all duration-300',
         hero
-          ? 'border-brand-700 bg-brand-800 bg-wave text-white shadow-[0_18px_40px_-18px_rgba(15,61,40,0.55)]'
-          : 'border-line bg-surface hover:-translate-y-0.5 hover:shadow-[0_18px_40px_-22px_rgba(16,40,28,0.25)]',
+          ? 'border-brand-700 bg-brand-800 bg-wave text-white shadow-[0_18px_40px_-18px_rgba(22,55,79,0.55)]'
+          : 'border-line bg-surface hover:-translate-y-0.5 hover:shadow-[0_18px_40px_-22px_rgba(15,32,50,0.25)]',
         className,
       )}
     >

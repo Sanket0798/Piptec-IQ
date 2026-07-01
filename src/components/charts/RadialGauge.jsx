@@ -73,12 +73,12 @@ export default function RadialGauge({
       <svg width={size} height={size}>
         <defs>
           <linearGradient id={gid} x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#3fa873" />
-            <stop offset="100%" stopColor="#1f7a4d" />
+            <stop offset="0%" stopColor="#5ea2d5" />
+            <stop offset="100%" stopColor="#2b76b3" />
           </linearGradient>
         </defs>
         {/* Background track */}
-        <path d={arcPath(0, 1)} fill="none" stroke="#eef1ec" strokeWidth={thickness} strokeLinecap="round" />
+        <path d={arcPath(0, 1)} fill="none" stroke="#eef2f7" strokeWidth={thickness} strokeLinecap="round" />
         {/* Animated foreground arc */}
         <path
           d={arcPath(0, frac)}

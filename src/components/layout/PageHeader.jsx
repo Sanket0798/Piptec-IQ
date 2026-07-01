@@ -30,7 +30,7 @@ export default function PageHeader({ breadcrumb, title, subtitle, actions, live 
 
 export function Button({ variant = 'primary', icon, children, className = '', ...rest }) {
   const variants = {
-    primary: 'bg-brand-500 text-white hover:bg-brand-600 shadow-[0_10px_22px_-10px_rgba(31,122,77,0.7)]',
+    primary: 'bg-brand-500 text-white hover:bg-brand-600 shadow-[0_10px_22px_-10px_rgba(43,118,179,0.7)]',
     outline: 'border border-line bg-surface text-ink hover:border-brand-200 hover:text-brand-600',
     soft: 'bg-brand-50 text-brand-600 hover:bg-brand-100',
     ghost: 'text-ink-soft hover:bg-surface-soft',

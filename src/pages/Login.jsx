@@ -141,7 +141,7 @@ export default function Login() {
         </div>
 
         {/* right: sign-in card */}
-        <div className="animate-fade-up rounded-(--radius-card) border border-line bg-surface p-7 shadow-[0_1px_2px_rgba(16,40,28,0.04),0_24px_60px_-24px_rgba(16,40,28,0.22)] sm:p-8">
+        <div className="animate-fade-up rounded-(--radius-card) border border-line bg-surface p-7 shadow-[0_1px_2px_rgba(15,32,50,0.04),0_24px_60px_-24px_rgba(15,32,50,0.22)] sm:p-8">
           <h2 className="text-2xl font-bold tracking-tight text-ink">Sign in</h2>
           <p className="mt-1 text-sm text-ink-soft">Access the PipeTec IQ platform.</p>
 
@@ -186,7 +186,7 @@ export default function Login() {
             <button
               type="submit"
               disabled={loading}
-              className="flex w-full items-center justify-center gap-2 rounded-2xl bg-linear-to-r from-brand-500 to-brand-400 py-3.5 text-sm font-semibold text-white shadow-[0_12px_26px_-12px_rgba(31,122,77,0.8)] transition hover:from-brand-600 hover:to-brand-500 disabled:opacity-70"
+              className="flex w-full items-center justify-center gap-2 rounded-2xl bg-linear-to-r from-brand-500 to-brand-400 py-3.5 text-sm font-semibold text-white shadow-[0_12px_26px_-12px_rgba(43,118,179,0.8)] transition hover:from-brand-600 hover:to-brand-500 disabled:opacity-70"
             >
               {loading ? (
                 <>
